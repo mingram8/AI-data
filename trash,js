@@ -1,0 +1,608 @@
+getOdds(function(){
+  //console.log("pitcher: ",pitch)
+
+  //console.log("batters: ",bat)
+  var lineup = {
+    c:["",0,0,0],
+    c2:["",0,0,0],
+      c3:["",0,0,0],
+      of:["",0,0,0],
+    of2:["",0,0,0],
+    of3:["",0,0,0],
+    fb:["",0,0,0],
+    fb2:["",0,0,0],
+    fb3:["",0,0,0],
+    sb:["",0,0,0],
+    sb2:["",0,0,0],
+    sb3:["",0,0,0],
+    tb:["",0,0,0],
+    tb2:["",0,0,0],
+    tb3:["",0,0,0],
+    ss:["",0,0,0],
+    ss2:["",0,0,0],
+    ss3:["",0,0,0]
+
+  }
+  console.log(`
+
+
+
+    `)
+  for (v in bat) {
+
+    if (bat[v].hits > .8 && bat[v].hr > .08) {
+      console.log(v, bat[v])
+    }
+      switch (bat[v].position) {
+        case "C<":
+        var hD = bat[v].hits-lineup.c[1];
+        var dD = bat[v].db-lineup.c[2];
+        var hrD = bat[v].hr-lineup.c[3];
+        var diff = hD + dD + hrD;
+         if (diff > 0) {
+           lineup.c2 = lineup.c;
+         lineup.c = [v,bat[v].hits,bat[v].db,bat[v].hr]
+       }
+       else {
+         var hD = bat[v].hits-lineup.c2[1];
+        var dD = bat[v].db-lineup.c2[2];
+        var hrD = bat[v].hr-lineup.c2[3];
+        var diff = hD + dD + hrD;
+        if (diff >0) {
+          lineup.c3 = lineup.c2;
+          lineup.c2 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+        } else {
+          var hD = bat[v].hits-lineup.c3[1];
+         var dD = bat[v].db-lineup.c3[2];
+         var hrD = bat[v].hr-lineup.c3[3];
+         var diff = hD + dD + hrD;
+         if (diff >0){
+           lineup.c3 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+         }
+        }
+       }
+
+        break;
+        case "OF":
+        var hD = bat[v].hits-lineup.of[1];
+        var dD = bat[v].db-lineup.of[2];
+        var hrD = bat[v].hr-lineup.of[3];
+        var diff = hD + dD + hrD;
+         if (diff > 0) {
+           lineup.of2 = lineup.of
+         lineup.of = [v,bat[v].hits,bat[v].db,bat[v].hr]
+       } else {
+         var hD = bat[v].hits-lineup.of2[1];
+        var dD = bat[v].db-lineup.of2[2];
+        var hrD = bat[v].hr-lineup.of2[3];
+        var diff = hD + dD + hrD;
+        if (diff >0) {
+          lineup.of3 = lineup.of2;
+          lineup.of2 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+        } else {
+          var hD = bat[v].hits-lineup.of3[1];
+         var dD = bat[v].db-lineup.of3[2];
+         var hrD = bat[v].hr-lineup.of3[3];
+         var diff = hD + dD + hrD;
+         if (diff >0){
+           lineup.of3 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+         }
+        }
+       }
+        break;
+        case "3B":
+        var hD = bat[v].hits-lineup.tb[1];
+        var dD = bat[v].db-lineup.tb[2];
+        var hrD = bat[v].hr-lineup.tb[3];
+        var diff = hD + dD + hrD;
+         if (diff > 0) {
+           lineup.tb2 = lineup.tb;
+         lineup.tb = [v,bat[v].hits,bat[v].db,bat[v].hr]
+       }
+       else {
+         var hD = bat[v].hits-lineup.tb2[1];
+        var dD = bat[v].db-lineup.tb2[2];
+        var hrD = bat[v].hr-lineup.tb2[3];
+        var diff = hD + dD + hrD;
+        if (diff >0) {
+          lineup.tb3 = lineup.tb2;
+          lineup.tb2 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+        } else {
+          var hD = bat[v].hits-lineup.tb3[1];
+         var dD = bat[v].db-lineup.tb3[2];
+         var hrD = bat[v].hr-lineup.tb3[3];
+         var diff = hD + dD + hrD;
+         if (diff >0){
+           lineup.tb3 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+         }
+        }
+       }
+        break;
+        case "2B":
+        var hD = bat[v].hits-lineup.sb[1];
+        var dD = bat[v].db-lineup.sb[2];
+        var hrD = bat[v].hr-lineup.sb[3];
+        var diff = hD + dD + hrD;
+         if (diff > 0) {
+           lineup.sb2 = lineup.sb;
+         lineup.sb = [v,bat[v].hits,bat[v].db,bat[v].hr]
+       }
+       else {
+         var hD = bat[v].hits-lineup.sb2[1];
+        var dD = bat[v].db-lineup.sb[2];
+        var hrD = bat[v].hr-lineup.sb2[3];
+        var diff = hD + dD + hrD;
+        if (diff >0) {
+          lineup.sb3 = lineup.sb2;
+          lineup.sb2 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+        } else {
+          var hD = bat[v].hits-lineup.sb3[1];
+         var dD = bat[v].db-lineup.sb3[2];
+         var hrD = bat[v].hr-lineup.sb3[3];
+         var diff = hD + dD + hrD;
+         if (diff >0){
+           lineup.sb3 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+         }
+        }
+       }
+        break;
+        case "1B":
+        var hD = bat[v].hits-lineup.fb[1];
+        var dD = bat[v].db-lineup.fb[2];
+        var hrD = bat[v].hr-lineup.fb[3];
+        var diff = hD + dD + hrD;
+         if (diff > 0) {
+           lineup.fb2 = lineup.fb;
+         lineup.fb = [v,bat[v].hits,bat[v].db,bat[v].hr]
+       }
+       else {
+        var hD = bat[v].hits-lineup.fb2[1];
+         var dD = bat[v].db-lineup.fb2[2];
+         var hrD = bat[v].hr-lineup.fb2[3];
+         var diff = hD + dD + hrD;
+       if (diff >0) {
+         lineup.fb3 = lineup.fb2;
+         lineup.fb2 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+       } else {
+         var hD = bat[v].hits-lineup.fb3[1];
+        var dD = bat[v].db-lineup.fb3[2];
+        var hrD = bat[v].hr-lineup.fb3[3];
+        var diff = hD + dD + hrD;
+        if (diff >0){
+          lineup.fb3 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+        }
+       }
+      }
+        break;
+        case "SS":
+        var hD = bat[v].hits-lineup.ss[1];
+        var dD = bat[v].db-lineup.ss[2];
+        var hrD = bat[v].hr-lineup.ss[3];
+        var diff = hD + dD + hrD;
+         if (diff > 0) {
+           lineup.ss2 = lineup.ss;
+         lineup.ss = [v,bat[v].hits,bat[v].db,bat[v].hr]
+       } else {
+         var hD = bat[v].hits-lineup.ss2[1];
+          var dD = bat[v].db-lineup.ss2[2];
+          var hrD = bat[v].hr-lineup.ss2[3];
+          var diff = hD + dD + hrD;
+        if (diff >0) {
+          lineup.ss3 = lineup.ss2;
+          lineup.ss2 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+        } else {
+          var hD = bat[v].hits-lineup.ss3[1];
+         var dD = bat[v].db-lineup.ss3[2];
+         var hrD = bat[v].hr-lineup.ss3[3];
+         var diff = hD + dD + hrD;
+         if (diff >0){
+           lineup.ss3 = [v,bat[v].hits,bat[v].db,bat[v].hr]
+         }
+        }
+       }
+        break;
+      }
+
+
+  }
+  // console.log(team)
+  //console.log(lineup)
+  console.log(pitch)
+
+  try {
+      res.send(pitch, team, bat)
+  } catch(e){}
+
+});
+function getOdds(cb) {
+	var ranks = [{name: "fag", rank:0}];
+	var url = "http://www.fangraphs.com/livescoreboard.aspx?date="+day();
+	console.log(url)
+	getPage(url, function($) {
+		$("tr").each(function(index){
+			var shit = $(this).children();
+			if ($(this).children().length ==2) {
+				for (var i=0; i < shit.length; i++) {
+					if (shit.eq(i).find(".highcharts-container").length> 0) {
+					}
+					else {
+						if (shit.eq(i).find("table").length == 3) {
+							var tb = shit.eq(i).find("table");
+							var rows = tb.eq(2).find("tr");
+							var link = rows.eq(0).find("a");
+							var done =0;
+							for (var xx = 0; xx <link.length; xx ++){
+								var href = link.eq(xx).attr('href');
+								var id = getPlayerId(href);
+								var awayLineup =  tb.eq(2).find("tr").find("td").eq(2);
+								var homeLineup =  tb.eq(2).find("tr").find("td").eq(3);
+								if (xx ==0)
+								var pitcherHA = 1;
+								else
+								var pitcherHA = 0;
+
+								getPitcherStats(id, [awayLineup, homeLineup], pitcherHA, function(pitcher){
+									pitch[pitcher[0]] = {name:pitcher[0],so:0, h: 0, hr: 0, w:0, db:0, tp: 0, hit:0, totalAB:0};
+									var done = 0;
+									var totalAB = 0;
+									var players = 0;
+									for (var i=0; i < pitcher[2][pitcher[3]].find("a").length; i++) {
+										var id = getPlayerId(pitcher[2][pitcher[3]].find("a").eq(i).attr('href'))
+										getBatterStats(id, pitcher, pitcher[3], function(batter, pitcher){
+											bat[batter[0]] = {}
+
+											if (team[batter[1].left[10]] == undefined)
+											team[batter[1].left[10]] = {so: 0, hits: 0, hr:0, tp:0, db:0,w:0,sb:0};
+
+											players ++
+											if (batter[1].bats == "sw"){
+												if (pitcher[1].throws == "left") {
+													var hit = ((batter[1].left[1] + pitcher[1].right[1])/2)*batter[1].left[8];
+													var hr = ((batter[1].left[4] + pitcher[1].right[4])/2) *batter[1].left[8];
+													var tp = ((batter[1].left[3] + pitcher[1].right[3])/2)*batter[1].left[8];
+													var db = ((batter[1].left[2] + pitcher[1].right[2])/2)*batter[1].left[8];
+													var sb = ((batter[1].left[7] + pitcher[1].right[7])/2)* batter[1].left[8];
+													var w = ((batter[1].left[5] + pitcher[1].right[5])/2)* batter[1].left[8];
+													var so = ((batter[1].left[6] + pitcher[1].right[4])/2) * batter[1].left[8];
+													var atBat = batter[1].left[8]
+													if (!isNaN(so))
+													pitch[pitcher[0]].so += so;
+
+													if (!isNaN(hr))
+													pitch[pitcher[0]].hr += hr;
+
+													if (!isNaN(w))
+													pitch[pitcher[0]].w += w;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+													if (!isNaN(db))
+													pitch[pitcher[0]].db += db;
+
+													if (!isNaN(tp))
+													pitch[pitcher[0]].tp += tp;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+														if (!isNaN(so))
+															team[batter[1].left[10]].so += so;
+
+														if (!isNaN(hr))
+															team[batter[1].left[10]].hr += hr;
+
+														if (!isNaN(w))
+															team[batter[1].left[10]].w += w;
+
+														if (!isNaN(hit))
+															team[batter[1].left[10]].hits += hit;
+
+														if (!isNaN(db))
+															team[batter[1].left[10]].db += db;
+
+														if (!isNaN(tp))
+															team[batter[1].left[10]].tp += tp;
+
+														if (!isNaN(hit))
+															team[batter[1].left[10]].hit += hit;
+
+													bat[batter[0]] = {so: so, hits: hit, hr: hr, tp: tp, db:db, w:w, sb: sb, position:batter[1].right[9]}
+
+												} else {
+													var hit = ((batter[1].right[1] + pitcher[1].left[1])/2)*batter[1].right[8];
+													var hr = ((batter[1].right[4] + pitcher[1].left[4])/2) *batter[1].right[8];
+													var tp = ((batter[1].right[3] + pitcher[1].left[3])/2)*batter[1].right[8];
+													var db = ((batter[1].right[2] + pitcher[1].left[2])/2)*batter[1].right[8];
+													var sb = ((batter[1].right[7] + pitcher[1].left[7])/2)* batter[1].right[8];
+													var w = ((batter[1].right[5] + pitcher[1].left[5])/2)* batter[1].right[8];
+													var so = ((batter[1].right[6] + pitcher[1].left[6])/2) * batter[1].right[8];
+													var atBat = batter[1].right[8]
+													if (!isNaN(so))
+													pitch[pitcher[0]].so += so;
+
+													if (!isNaN(hr))
+													pitch[pitcher[0]].hr += hr;
+
+													if (!isNaN(w))
+													pitch[pitcher[0]].w += w;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+													if (!isNaN(db))
+													pitch[pitcher[0]].db += db;
+
+													if (!isNaN(tp))
+													pitch[pitcher[0]].tp += tp;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+
+														if (!isNaN(so))
+															team[batter[1].left[10]].so += so;
+
+														if (!isNaN(hr))
+															team[batter[1].left[10]].hr += hr;
+
+														if (!isNaN(w))
+														team[batter[1].left[10]].w += w;
+
+
+
+														if (!isNaN(db))
+														team[batter[1].left[10]].db += db;
+
+														if (!isNaN(tp))
+															team[batter[1].left[10]].tp += tp;
+
+														if (!isNaN(hit))
+														team[batter[1].left[10]].hits += hit;
+
+
+													bat[batter[0]] = {so: so, hits: hit, hr: hr, tp: tp, db:db, w:w, sb: sb, position:batter[1].right[9]}
+
+
+												}
+											} else if (batter[1].bats == "left") {
+												if (pitcher[1].throws == "left") {
+													var hit = ((batter[1].left[1] + pitcher[1].left[1])/2)*batter[1].left[8];
+													var hr = ((batter[1].left[4] + pitcher[1].left[4])/2) *batter[1].left[8];
+													var tp = ((batter[1].left[3] + pitcher[1].left[3])/2)*batter[1].left[8];
+													var db = ((batter[1].left[2] + pitcher[1].left[2])/2)*batter[1].left[8];
+													var sb = ((batter[1].left[7] + pitcher[1].left[7])/2)* batter[1].left[8];
+													var w = ((batter[1].left[5] + pitcher[1].left[5])/2)* batter[1].left[8];
+													var so = ((batter[1].left[6] + pitcher[1].left[6])/2) * batter[1].left[8];
+													var atBat = batter[1].left[8]
+													if (!isNaN(so))
+													pitch[pitcher[0]].so += so;
+
+													if (!isNaN(hr))
+													pitch[pitcher[0]].hr += hr;
+
+													if (!isNaN(w))
+													pitch[pitcher[0]].w += w;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+													if (!isNaN(db))
+													pitch[pitcher[0]].db += db;
+
+													if (!isNaN(tp))
+													pitch[pitcher[0]].tp += tp;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+
+														if (!isNaN(so))
+															team[batter[1].left[10]].so += so;
+
+														if (!isNaN(hr))
+														team[batter[1].left[10]].hr += hr;
+
+														if (!isNaN(w))
+															team[batter[1].left[10]].w += w;
+
+														if (!isNaN(hit))
+															team[batter[1].left[10]].hits += hit;
+
+														if (!isNaN(db))
+														team[batter[1].left[10]].db += db;
+
+														if (!isNaN(tp))
+															team[batter[1].left[10]].tp += tp;
+
+
+
+
+													bat[batter[0]] = {so: so, hits: hit, hr: hr, tp: tp, db:db, w:w, sb: sb, position:batter[1].right[9]}
+
+												} else {
+													var hit = ((batter[1].right[1] + pitcher[1].left[1])/2)*batter[1].right[8];
+													var hr = ((batter[1].right[4] + pitcher[1].left[4])/2) *batter[1].right[8];
+													var tp = ((batter[1].right[3] + pitcher[1].left[3])/2)*batter[1].right[8];
+													var db = ((batter[1].right[2] + pitcher[1].left[2])/2)*batter[1].right[8];
+													var sb = ((batter[1].right[7] + pitcher[1].left[7])/2)* batter[1].right[8];
+													var w = ((batter[1].right[5] + pitcher[1].left[5])/2)* batter[1].right[8];
+													var so = ((batter[1].right[6] + pitcher[1].left[6])/2) * batter[1].right[8];
+													var atBat = batter[1].right[8]
+													if (!isNaN(so))
+													pitch[pitcher[0]].so += so;
+
+													if (!isNaN(hr))
+													pitch[pitcher[0]].hr += hr;
+
+													if (!isNaN(w))
+													pitch[pitcher[0]].w += w;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+													if (!isNaN(db))
+													pitch[pitcher[0]].db += db;
+
+													if (!isNaN(tp))
+													pitch[pitcher[0]].tp += tp;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+
+														if (!isNaN(so))
+															team[batter[1].left[10]].so += so;
+
+														if (!isNaN(hr))
+									team[batter[1].left[10]].hr += hr;
+
+														if (!isNaN(w))
+													team[batter[1].left[10]].w += w;
+
+														if (!isNaN(hit))
+															team[batter[1].left[10]].hits += hit;
+
+														if (!isNaN(db))
+															team[batter[1].left[10]].db += db;
+
+														if (!isNaN(tp))
+									team[batter[1].left[10]].tp += tp;
+
+
+
+
+													bat[batter[0]] = {so: so, hits: hit, hr: hr, tp: tp, db:db, w:w, sb: sb, position:batter[1].right[9]}
+
+												}
+											} else if (batter[1].bats == "right") {
+												if (pitcher[1].throws == "left") {
+													var hit = ((batter[1].left[1] + pitcher[1].right[1])/2)*batter[1].left[8];
+													var hr = ((batter[1].left[4] + pitcher[1].right[4])/2) *batter[1].left[8];
+													var tp = ((batter[1].left[3] + pitcher[1].right[3])/2)*batter[1].left[8];
+													var db = ((batter[1].left[2] + pitcher[1].right[2])/2)*batter[1].left[8];
+													var sb = ((batter[1].left[7] + pitcher[1].right[7])/2)* batter[1].left[8];
+													var w = ((batter[1].left[5] + pitcher[1].right[5])/2)* batter[1].left[8];
+													var so = ((batter[1].left[6] + pitcher[1].right[6])/2) * batter[1].left[8];
+													var atBat = batter[1].left[8];
+													if (!isNaN(so))
+													pitch[pitcher[0]].so += so;
+
+													if (!isNaN(hr))
+													pitch[pitcher[0]].hr += hr;
+
+													if (!isNaN(w))
+													pitch[pitcher[0]].w += w;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+													if (!isNaN(db))
+													pitch[pitcher[0]].db += db;
+
+													if (!isNaN(tp))
+													pitch[pitcher[0]].tp += tp;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+
+														if (!isNaN(so))
+								team[batter[1].left[10]].so += so;
+
+														if (!isNaN(hr))
+				team[batter[1].left[10]].hr += hr;
+
+														if (!isNaN(w))
+														team[batter[1].left[10]].w += w;
+
+														if (!isNaN(hit))
+					team[batter[1].left[10]].hit += hit;
+
+														if (!isNaN(db))
+										team[batter[1].left[10]].db += db;
+
+														if (!isNaN(tp))
+									team[batter[1].left[10]].tp += tp;
+
+
+													bat[batter[0]] = {so: so, hits: hit, hr: hr, tp: tp, db:db, w:w, sb: sb, position:batter[1].right[9]}
+
+												} else {
+													var hit = ((batter[1].right[1] + pitcher[1].right[1])/2)*batter[1].right[8];
+													var hr = ((batter[1].right[4] + pitcher[1].right[4])/2) *batter[1].right[8];
+													var tp = ((batter[1].right[3] + pitcher[1].right[3])/2)*batter[1].right[8];
+													var db = ((batter[1].right[2] + pitcher[1].right[2])/2)*batter[1].right[8];
+													var sb = ((batter[1].right[7] + pitcher[1].right[7])/2)* batter[1].right[8];
+													var w = ((batter[1].right[5] + pitcher[1].right[5])/2)* batter[1].right[8];
+													var so = ((batter[1].right[6] + pitcher[1].right[6])/2) * batter[1].right[8];
+													var atBat = batter[1].right[8]
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+													if (!isNaN(so))
+													pitch[pitcher[0]].so += so;
+
+													if (!isNaN(hr))
+													pitch[pitcher[0]].hr += hr;
+
+													if (!isNaN(w))
+													pitch[pitcher[0]].w += w;
+
+													if (!isNaN(hit))
+													pitch[pitcher[0]].hit += hit;
+
+													if (!isNaN(db))
+													pitch[pitcher[0]].db += db;
+
+													if (!isNaN(tp))
+													pitch[pitcher[0]].tp += tp;
+
+													pitch[pitcher[0]].totalAB += atBat;
+
+
+														if (!isNaN(so))
+															team[batter[1].left[10]].so += so;
+
+														if (!isNaN(hr))
+								team[batter[1].left[10]].hr += hr;
+
+														if (!isNaN(w))
+								team[batter[1].left[10]].w += w;
+
+														if (!isNaN(hit))
+		team[batter[1].left[10]].hits += hit;
+
+														if (!isNaN(db))
+		team[batter[1].left[10]].db += db;
+
+														if (!isNaN(tp))
+	team[batter[1].left[10]].tp += tp;
+
+
+
+													bat[batter[0]] = {so: so, hits: hit, hr: hr, tp: tp, db:db, w:w, sb: sb, position:batter[1].right[9]}
+
+													}
+
+
+											}
+                      done++;
+													bat[batter[0]].team = batter[1].right[10]
+											if (done == pitcher[2][pitcher[3]].find("a").length)
+											cb();
+
+										})
+									}
+
+								})
+							}
+						}
+					}
+				}
+			}
+			})
+
+		});
+	}

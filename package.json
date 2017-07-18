@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "brain": "^0.7.0",
+    "synaptic": "^1.0.10"
+  }
+}
